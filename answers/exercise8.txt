@@ -1,0 +1,252 @@
+Last login: Thu Aug  6 10:34:12 on ttys001
+alan@MacBook-Air-som-tillhor-Alan ~ % docker ls
+docker: unknown command: docker ls
+
+Run 'docker --help' for more information
+alan@MacBook-Air-som-tillhor-Alan ~ % cd fos12
+alan@MacBook-Air-som-tillhor-Alan fos12 % docker ls
+docker: unknown command: docker ls
+
+Run 'docker --help' for more information
+alan@MacBook-Air-som-tillhor-Alan fos12 % docker container ls
+CONTAINER ID   IMAGE            COMMAND                  CREATED             STATUS             PORTS                                           NAMES
+cb3d1474c5fe   mongo            "docker-entrypoint.s…"   39 minutes ago      Up 39 minutes      0.0.0.0:3456->27017/tcp, [::]:3456->27017/tcp   todo-backend-mongo-1
+9a921080a0bf   redis            "docker-entrypoint.s…"   39 minutes ago      Up 39 minutes      0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp     todo-backend-redis-1
+6152e74fdd48   nginx            "/docker-entrypoint.…"   About an hour ago   Up About an hour   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp         condescending_bohr
+ea2cc7237761   express-server   "docker-entrypoint.s…"   19 hours ago        Up 19 hours        0.0.0.0:3123->3000/tcp, [::]:3123->3000/tcp     gracious_cerf
+alan@MacBook-Air-som-tillhor-Alan fos12 % docker exec -it todo-backend-mongo-1 mongosh
+Current Mongosh Log ID:	6a7455413b05e5c674c715e3
+Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.9.2
+Using MongoDB:		undefined
+Using Mongosh:		2.9.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+test> show dbs
+MongoServerError[Unauthorized]: Command listDatabases requires authentication
+test> exit
+
+What's next:
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug todo-backend-mongo-1
+    Learn more at https://docs.docker.com/go/debug-cli/
+alan@MacBook-Air-som-tillhor-Alan fos12 % docker exec -it todo-backend-mongo-1 mongosh -u root -p example
+Current Mongosh Log ID:	6a745562380fabf319e70e3c
+Connecting to:		mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.9.2
+Using MongoDB:		8.2.12
+Using Mongosh:		2.9.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-08-06T08:55:03.117+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2026-08-06T08:55:03.282+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+   2026-08-06T08:55:03.282+00:00: We suggest setting the contents of sysfsFile to 0.
+   2026-08-06T08:55:03.282+00:00: We suggest setting swappiness to 0 or 1, as swapping can cause performance problems.
+------
+
+test> show dbs
+admin         100.00 KiB
+config        108.00 KiB
+local          64.00 KiB
+the_database   64.00 KiB
+test> use the_databse
+switched to db the_databse
+the_databse> exit
+
+What's next:
+    Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug todo-backend-mongo-1
+    Learn more at https://docs.docker.com/go/debug-cli/
+alan@MacBook-Air-som-tillhor-Alan fos12 % docker exec -it todo-backend-mongo-1 mongosh -u root -p example
+Current Mongosh Log ID:	6a74557fe9480db1c066fe45
+Connecting to:		mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.9.2
+Using MongoDB:		8.2.12
+Using Mongosh:		2.9.2
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2026-08-06T08:55:03.117+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2026-08-06T08:55:03.282+00:00: For customers running the current memory allocator, we suggest changing the contents of the following sysfsFile
+   2026-08-06T08:55:03.282+00:00: We suggest setting the contents of sysfsFile to 0.
+   2026-08-06T08:55:03.282+00:00: We suggest setting swappiness to 0 or 1, as swapping can cause performance problems.
+------
+
+test> show dbs
+admin         100.00 KiB
+config        108.00 KiB
+local          64.00 KiB
+the_database   64.00 KiB
+test> use the_database
+switched to db the_database
+the_database> show collections
+todos
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId('6a73802d8cbd05c0c84b4cdf'),
+    text: 'Write code',
+    done: true
+  },
+  {
+    _id: ObjectId('6a73802d8cbd05c0c84b4ce0'),
+    text: 'Learn about containers',
+    done: false
+  },
+  {
+    _id: ObjectId('6a7448993d18b08f0f26a20b'),
+    text: 'Increase the number of tools in my tool belt',
+    done: false
+  },
+  {
+    _id: ObjectId('6a7452d14a77ebee3e50d9c7'),
+    text: 'Redis test',
+    done: false,
+    __v: 0
+  },
+  {
+    _id: ObjectId('6a74537f8bee52ff4ec04bb0'),
+    text: 'Redis test 2',
+    done: false,
+    __v: 0
+  },
+  {
+    _id: ObjectId('6a74547ecc9139c1955a4775'),
+    text: 'Redis test',
+    done: false,
+    __v: 0
+  }
+]
+the_database> db.the_databse.insertOne({text: 'Increase the number of tools in my tool belt', done: false})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6a7455c1e9480db1c066fe46')
+}
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId('6a73802d8cbd05c0c84b4cdf'),
+    text: 'Write code',
+    done: true
+  },
+  {
+    _id: ObjectId('6a73802d8cbd05c0c84b4ce0'),
+    text: 'Learn about containers',
+    done: false
+  },
+  {
+    _id: ObjectId('6a7448993d18b08f0f26a20b'),
+    text: 'Increase the number of tools in my tool belt',
+    done: false
+  },
+  {
+    _id: ObjectId('6a7452d14a77ebee3e50d9c7'),
+    text: 'Redis test',
+    done: false,
+    __v: 0
+  },
+  {
+    _id: ObjectId('6a74537f8bee52ff4ec04bb0'),
+    text: 'Redis test 2',
+    done: false,
+    __v: 0
+  },
+  {
+    _id: ObjectId('6a74547ecc9139c1955a4775'),
+    text: 'Redis test',
+    done: false,
+    __v: 0
+  }
+]
+the_database> db.collection.insertOne({ text: 'Increase the number of tools in my tool belt',
+|     done: false})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6a745624e9480db1c066fe47')
+}
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId('6a73802d8cbd05c0c84b4cdf'),
+    text: 'Write code',
+    done: true
+  },
+  {
+    _id: ObjectId('6a73802d8cbd05c0c84b4ce0'),
+    text: 'Learn about containers',
+    done: false
+  },
+  {
+    _id: ObjectId('6a7448993d18b08f0f26a20b'),
+    text: 'Increase the number of tools in my tool belt',
+    done: false
+  },
+  {
+    _id: ObjectId('6a7452d14a77ebee3e50d9c7'),
+    text: 'Redis test',
+    done: false,
+    __v: 0
+  },
+  {
+    _id: ObjectId('6a74537f8bee52ff4ec04bb0'),
+    text: 'Redis test 2',
+    done: false,
+    __v: 0
+  },
+  {
+    _id: ObjectId('6a74547ecc9139c1955a4775'),
+    text: 'Redis test',
+    done: false,
+    __v: 0
+  }
+]
+the_database> db.todos.insertOne({text: 'Increase the number of tools in my tool belt',
+|     done: false})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6a74566fe9480db1c066fe48')
+}
+the_database>  db.todos.find({})
+[
+  {
+    _id: ObjectId('6a73802d8cbd05c0c84b4cdf'),
+    text: 'Write code',
+    done: true
+  },
+  {
+    _id: ObjectId('6a73802d8cbd05c0c84b4ce0'),
+    text: 'Learn about containers',
+    done: false
+  },
+  {
+    _id: ObjectId('6a7448993d18b08f0f26a20b'),
+    text: 'Increase the number of tools in my tool belt',
+    done: false
+  },
+  {
+    _id: ObjectId('6a7452d14a77ebee3e50d9c7'),
+    text: 'Redis test',
+    done: false,
+    __v: 0
+  },
+  {
+    _id: ObjectId('6a74537f8bee52ff4ec04bb0'),
+    text: 'Redis test 2',
+    done: false,
+    __v: 0
+  },
+  {
+    _id: ObjectId('6a74547ecc9139c1955a4775'),
+    text: 'Redis test',
+    done: false,
+    __v: 0
+  },
+  {
+    _id: ObjectId('6a74566fe9480db1c066fe48'),
+    text: 'Increase the number of tools in my tool belt',
+    done: false
+  }
+]
+the_database> 
+

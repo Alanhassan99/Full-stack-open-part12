@@ -1,0 +1,61 @@
+alan@MacBook-Air-som-tillhor-Alan ~ % docker start -i funny_booth
+nano /usr/src/app/index.js
+bash: nano: command not found
+root@8d99475bd884:/# apt-get update
+apt-get -y install nano
+Get:1 http://ports.ubuntu.com/ubuntu-ports resolute InRelease [136 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports resolute-updates InRelease [137 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports resolute-backports InRelease [136 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports resolute-security InRelease [137 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports resolute/main arm64 Packages [1860 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports resolute/universe arm64 Packages [19.9 MB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports resolute/multiverse arm64 Packages [298 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports resolute/restricted arm64 Packages [231 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports resolute-updates/universe arm64 Packages [273 kB]
+Get:10 http://ports.ubuntu.com/ubuntu-ports resolute-updates/multiverse arm64 Packages [13.3 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports resolute-updates/restricted arm64 Packages [523 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports resolute-updates/main arm64 Packages [549 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports resolute-backports/universe arm64 Packages [567 B]
+Get:14 http://ports.ubuntu.com/ubuntu-ports resolute-security/restricted arm64 Packages [474 kB]
+Get:15 http://ports.ubuntu.com/ubuntu-ports resolute-security/main arm64 Packages [440 kB]
+Get:16 http://ports.ubuntu.com/ubuntu-ports resolute-security/universe arm64 Packages [180 kB]
+Get:17 http://ports.ubuntu.com/ubuntu-ports resolute-security/multiverse arm64 Packages [11.2 kB]
+Fetched 25.3 MB in 5s (5363 kB/s)                            
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Solving dependencies... Done
+Suggested packages:
+  hunspell
+The following NEW packages will be installed:
+  nano
+0 upgraded, 1 newly installed, 0 to remove and 5 not upgraded.
+Need to get 288 kB of archives.
+After this operation, 934 kB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports resolute-updates/main arm64 nano arm64 8.7.1-1ubuntu0.1 [288 kB]
+Fetched 288 kB in 0s (1255 kB/s)
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 79, <STDIN> line 1.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/aarch64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/aarch64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/aarch64-linux-gnu/perl-base /usr/lib/aarch64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8, <STDIN> line 1.)
+debconf: falling back to frontend: Teletype
+Selecting previously unselected package nano.
+(Reading database ... 7720 files and directories currently installed.)
+Preparing to unpack .../nano_8.7.1-1ubuntu0.1_arm64.deb ...
+Unpacking nano (8.7.1-1ubuntu0.1) ...
+Setting up nano (8.7.1-1ubuntu0.1) ...
+update-alternatives: using /bin/nano to provide /usr/bin/editor (editor) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/editor.1.gz because associated file /usr/share/man/man1/nano.1.gz (of link group editor) does not exist
+update-alternatives: using /bin/nano to provide /usr/bin/pico (pico) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/pico.1.gz because associated file /usr/share/man/man1/nano.1.gz (of link group pico) does not exist
+root@8d99475bd884:/# nano usr/src/app/index.js
+root@8d99475bd884:/# cat /usr/src/app/index.js
+console.log('Hello')
+root@8d99475bd884:/# exit
+exit
+alan@MacBook-Air-som-tillhor-Alan ~ % cd FOS12/answers
+alan@MacBook-Air-som-tillhor-Alan answers % ls
+exercise1.txt	exercise2.txt
+alan@MacBook-Air-som-tillhor-Alan answers % nano exercise3.txt
